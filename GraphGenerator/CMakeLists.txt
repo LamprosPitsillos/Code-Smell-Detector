@@ -21,9 +21,11 @@ add_definitions("-fno-rtti -D_GNU_SOURCE -D_DEBUG -D__STDC_CONSTANT_MACROS -D__S
 
 set(CLANG_LIBS libclang-cpp.so)
 set(JSONCPP_LIBS libjsoncpp.so)
+set(LLVM_LIBS libLLVM-15.so)
 
 # Try to guess the clang include paths (linux)
-set(CLANG_INCLUDE_DIR "/usr/lib/llvm-15/lib/clang/15.0.2/include" CACHE STRING "The directory path to the .h files for clang.")
+set(CLANG_INCLUDE_DIR "/usr/lib/clang/15.0.7/include" CACHE STRING "The directory path to the .h files for clang.")
+# set(CLANG_INCLUDE_DIR "/usr/lib/llvm-15/lib/clang/15.0.2/include" CACHE STRING "The directory path to the .h files for clang.")
 set(INCREMENTAL_GENERATION TRUE CACHE BOOL "Wether to mine incrementally after cancel and re-run.")
 set(GUI TRUE CACHE BOOL "Wether to render the gui progress bar.")
 
@@ -35,7 +37,7 @@ add_definitions(-DCLANG_INCLUDE_DIR="${CLANG_INCLUDE_DIR}")
 target_compile_definitions(${PROJECT_NAME} PUBLIC INCREMENTAL_GENERATION=${INCREMENTAL_GENERATION})
 target_compile_definitions(${PROJECT_NAME} PUBLIC GUI=${GUI})
 
-target_link_libraries(${PROJECT_NAME} PRIVATE ${CLANG_LIBS} ${JSONCPP_LIBS} ${wxWidgets_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${CLANG_LIBS} ${JSONCPP_LIBS} ${wxWidgets_LIBRARIES} ${LLVM_LIBS})
 
 set(SUBDIRECTORIES
 	DependenciesMining
