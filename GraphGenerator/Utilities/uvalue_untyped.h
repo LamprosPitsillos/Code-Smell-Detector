@@ -5,6 +5,7 @@
 #ifndef UVALUE_UNTYPED_H
 #define UVALUE_UNTYPED_H
 
+#include <cstdint>
 #include <unordered_map>
 #include <functional>
 #include <string>

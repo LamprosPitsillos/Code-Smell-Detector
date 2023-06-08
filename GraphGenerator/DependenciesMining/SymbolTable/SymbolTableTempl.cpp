@@ -469,6 +469,6 @@ template<typename T> void SymbolTable<T>::Print() {
 	}
 }
 
-template class SymbolTable<Structure>;
-template class SymbolTable<Definition>;
-template class SymbolTable<Method>;
+template class DependenciesMining_Ignore::SymbolTable<Structure>;
+template class DependenciesMining_Ignore::SymbolTable<Definition>;
+template class DependenciesMining_Ignore::SymbolTable<Method>;

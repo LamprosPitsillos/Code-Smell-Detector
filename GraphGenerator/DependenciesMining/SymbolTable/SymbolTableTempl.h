@@ -81,7 +81,7 @@ namespace DependenciesMining_Ignore  {
 		Symbol() = default; 
 		Symbol(ClassType classType) : classType(classType) {};
 		Symbol(ID_T id, const std::string& name, const std::string& nameSpace = "", ClassType classType = ClassType::Undefined, const std::string& fileName = "", int line = -1, int column = -1) 
-			: id(id), name(name), classType(classType), srcInfo(SourceInfo(fileName, line, column)) {};
+			: id(id), name(name), srcInfo(SourceInfo(fileName, line, column)), classType(classType) {};
 
 		virtual ID_T GetID() const;
 		virtual std::string GetName() const;
@@ -155,7 +155,7 @@ namespace DependenciesMining_Ignore  {
 
 		public:
 			Member() = default;
-			Member(const std::string& name, Structure* type, SourceInfo locEnd) : name(name), type(type), locEnd(locEnd) {};
+			Member(const std::string& name, Structure* type, SourceInfo locEnd) : name(name), locEnd(locEnd), type(type) {};
 			std::string GetName() const;
 			SourceInfo GetLocEnd() const;
 			Structure* GetType() const;
@@ -172,7 +172,7 @@ namespace DependenciesMining_Ignore  {
 			std::vector<Member> members;
 		public:
 			MemberExpr() = default;
-			MemberExpr(std::string expr, SourceInfo locEnd, std::string fileName, int line, int column) : expr(expr), locEnd(locEnd), srcInfo(SourceInfo(fileName, line, column)) {};
+			MemberExpr(std::string expr, SourceInfo locEnd, std::string fileName, int line, int column) : expr(expr), srcInfo(SourceInfo(fileName, line, column)), locEnd(locEnd) {};
 			std::string GetExpr() const;
 			std::vector<Member> GetMembers() const;
 			SourceInfo GetLocEnd() const;

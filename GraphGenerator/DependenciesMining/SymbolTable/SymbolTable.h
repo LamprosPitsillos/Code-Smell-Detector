@@ -101,7 +101,7 @@ namespace dependenciesMining {
 		Symbol() = default; 
 		Symbol(ClassType classType) : classType(classType) {};
 		Symbol(const ID_T& id, const std::string& name, const std::string& nameSpace = "", ClassType classType = ClassType::Undefined, const std::string& fileName = "", int line = -1, int column = -1)
-			: id(id), name(name), nameSpace(nameSpace), classType(classType), srcInfo(fileName, line, column) {};
+			: id(id), name(name), nameSpace(nameSpace), srcInfo(fileName, line, column), classType(classType) {};
 		
 		virtual ~Symbol() = default;
 
@@ -235,7 +235,7 @@ namespace dependenciesMining {
 
 		public:
 			Member() = default;
-			Member(const std::string& name, Structure* type, SourceInfo locEnd, MemberType memType = Value_mem_t) : name(name), type(type), locEnd(locEnd), memType(memType) {};
+			Member(const std::string& name, Structure* type, SourceInfo locEnd, MemberType memType = Value_mem_t) : name(name), locEnd(locEnd), type(type), memType(memType) {};
 			const std::string& GetName() const;
 			SourceInfo GetLocEnd() const;
 			Structure* GetType() const;
@@ -253,7 +253,7 @@ namespace dependenciesMining {
 			std::vector<Member> members;
 		public:
 			MemberExpr() = default;
-			MemberExpr(std::string expr, SourceInfo locEnd, std::string fileName, int line, int column) : expr(expr), locEnd(locEnd), srcInfo(SourceInfo(fileName, line, column)) {};
+			MemberExpr(std::string expr, SourceInfo locEnd, std::string fileName, int line, int column) : expr(expr), srcInfo(SourceInfo(fileName, line, column)), locEnd(locEnd) {};
 			std::string GetExpr() const;
 			std::vector<Member> GetMembers() const;
 			SourceInfo GetLocEnd() const;
